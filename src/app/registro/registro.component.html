@@ -1,0 +1,169 @@
+<div  class="container  h-90 w-70" style="margin: auto ;">
+    <div class="row d-flex justify-content-center align-items-center h-60 w-50" style="margin: auto ; margin-top: 50px;">
+      <div class="col-10 col-md-12 col-lg-12 col-xl-12" style="margin: auto;">
+<div class="card bg-dark text-white" style="border-radius: 1rem;">
+    <form [formGroup]="_form" >
+    <div class="card-body p-5 text-center">
+      
+      <div class="mb-md-5 mt-md-4 pb-5">
+        <div class="row">
+        <h2 class="fw-bold mb-2 text-uppercase">Registro</h2>
+        
+        <div class="col-6">
+        <div class="form-outline form-white mb-4 ">
+          <input type="text"  class="form-control form-control-md" formControlName="name" />
+            <label class="form-label" for="typeEmailX">Nombre</label>
+            <div class="alert alert-danger" role="alert" *ngIf="_form.get('name')?.touched && _form.get('name')?.errors?.['required'] ">
+              CAMPO REQUERIDO
+            </div>
+          </div>
+
+       </div>
+       <div class="col-6">
+        <div class="form-outline form-white mb-4">
+          <input type="text"  class="form-control form-control-md" formControlName="last_name" />
+          <label class="form-label" for="typePasswordX">Apellido</label>
+          <div class="alert alert-danger" role="alert" *ngIf="_form.get('last_name')?.touched && _form.get('last_name')?.errors?.['required'] ">
+            CAMPO REQUERIDO
+          </div>
+        </div>
+        </div>
+        <div class="col-6">
+        <div class="form-outline form-white mb-4">
+            <input type="text"  class="form-control form-control-md" formControlName="CI" />
+            <label class="form-label" for="typePasswordX">Cedula</label>
+            <div class="alert alert-danger" role="alert" *ngIf="_form.get('CI')?.touched && _form.get('CI')?.errors?.['required'] ">
+              CAMPO REQUERIDO
+            </div> 
+            <div class="alert alert-danger" role="alert" *ngIf=" _form.get('CI')?.errors?.['pattern'] ">
+              solo se permiten numeros
+             </div> 
+             <div class="alert alert-danger" role="alert" *ngIf=" _form.get('CI')?.errors?.['minlength'] ">
+              el minimo son 10 caracteres
+             </div> 
+         </div>
+        </div>
+        <div class="col-6">
+          <div class="form-outline form-white mb-4">
+            <input type="text"  class="form-control form-control-md" formControlName="email" />
+            <label class="form-label" for="typePasswordX">Correo</label>
+            <div class="alert alert-danger" role="alert" *ngIf="_form.get('email')?.touched && _form.get('email')?.errors?.['required'] ">
+              CAMPO REQUERIDO
+            </div> 
+            <div class="alert alert-danger" role="alert" *ngIf="_form.get('email')?.touched && _form.get('email')?.errors?.['email'] ">
+              ingrese un email valido
+            </div> 
+          </div>
+        </div>       
+       
+        <div class="row">
+          <div class="col-6">
+            
+            <div class="row">
+                <div class="col-12">
+                    <input type="text"  class="form-control form-control-md" style="margin:5px" placeholder="parcial1" formControlName="parcial1" />
+                    <div class="alert alert-danger" role="alert" *ngIf="_form.get('parcial1')?.touched && _form.get('parcial1')?.errors?.['required'] ">
+                      CAMPO REQUERIDO
+                    </div> 
+                    <div class="alert alert-danger" role="alert" *ngIf=" _form.get('parcial1')?.errors?.['pattern'] ">
+                      solo se permiten numeros
+                     </div> 
+                  </div>
+                <div class="col-12">
+                    <input type="text"  class="form-control form-control-md" style="margin:5px" placeholder="parcial2" formControlName="parcial2" />
+                    <div class="alert alert-danger" role="alert" *ngIf="_form.get('parcial2')?.touched && _form.get('parcial2')?.errors?.['required'] ">
+                      CAMPO REQUERIDO
+                    </div> 
+                    <div class="alert alert-danger" role="alert" *ngIf=" _form.get('parcial2')?.errors?.['pattern'] ">
+                      solo se permiten numeros
+                     </div> 
+                  </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-12">
+                    <input type="text"  class="form-control form-control-md" style="margin:5px" placeholder="parcial3" formControlName="parcial3" />
+                    <div class="alert alert-danger" role="alert" *ngIf="_form.get('parcial3')?.touched && _form.get('parcial3')?.errors?.['required'] ">
+                      CAMPO REQUERIDO
+                    </div> 
+                    <div class="alert alert-danger" role="alert" *ngIf=" _form.get('parcial3')?.errors?.['pattern'] ">
+                      solo se permiten numeros
+                     </div> 
+                  </div>
+                <div class="col-12">
+                    <input type="text"  class="form-control form-control-md" style="margin:5px" placeholder="parcial4" formControlName="parcial4" />
+                    <div class="alert alert-danger" role="alert" *ngIf="_form.get('parcial4')?.touched && _form.get('parcial4')?.errors?.['required'] ">
+                      CAMPO REQUERIDO
+                    </div> 
+                    <div class="alert alert-danger" role="alert" *ngIf=" _form.get('parcial4')?.errors?.['pattern'] ">
+                      solo se permiten numeros
+                     </div> 
+                  </div>
+            </div>  
+        </div>
+        <div class="col-6" *ngIf="valid">
+        <h6>Promedio:</h6>
+      </div>
+      <div class="col-6" *ngIf="valid">
+        <h6>{{prom}}</h6>
+      </div>
+        <div class="col-6">
+          <button class="btn btn-outline-light btn-md px-5" style="margin-top: 20px;" type="submit" (click)="calcular()" >Calcular</button>
+      </div>
+
+        <div class="col-6">
+          <button class="btn btn-outline-light btn-md px-5" style="margin-top: 20px;" type="submit" (click)="store(_form.value)" >Guardar</button>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-outline-light btn-md px-5" style="margin-top: 20px;" type="submit" (click)="cambio()" >Notas</button>
+     </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </form>
+  <!-- <iframe src="https://embed.lottiefiles.com/animation/124534"></iframe> -->
+  <!-- <h2 style="text-align: center ;">Tabla de notas</h2>
+  <div class="col-12 table-responsive text-center">
+    
+    <table class="table table-dark" style="border-radius: 10rem;" id="notas">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Correo</th>
+          <th scope="col" >parcial1</th>
+          <th scope="col" >parcial2</th>
+          <th scope="col" >parcial3</th>
+          <th scope="col" >parcial4</th>
+          <th scope="col" >promedio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of estudiante.estudiante">
+          <th scope="row">{{item.id}}</th>
+          <td>{{item.name}}</td>
+          <td>{{item.last_name}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.parcial1}}</td>
+          <td>{{item.parcial2}}</td>
+          <td>{{item.parcial3}}</td>
+          <td>{{item.parcial4}}</td>
+          <td>{{item.promedio}}</td>
+        </tr>
+       
+      </tbody>
+    </table>
+  </div> -->
+ 
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+
+

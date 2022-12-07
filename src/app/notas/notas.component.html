@@ -1,0 +1,85 @@
+<div  class="container  h-90 w-80" style="margin: auto ;" >
+    <div class="row d-flex justify-content-center align-items-center h-70 w-60"  style="margin: auto ; ">
+      <div class="col-10 col-md-12 col-lg-12 col-xl-12" >
+<div class="card bg-dark text-white" style="border-radius: 1rem;" *ngIf="loaded">
+<div class="col-12" >
+    <div class="row">
+        <div class="col-3 justify-content-center" style="margin:auto">  <button class="btn btn-outline-light btn-md px-5" style="margin-top: 20px; margin-left: 20px;" type="submit" (click)="cambio()" >Registro</button></div>
+        <div class="col-9 justify-content-center" ><h2 style="text-align: center;">Tabla de notas</h2></div>
+    </div>
+</div>
+
+  
+
+  <div class="col-12 table-responsive text-center">
+    
+    <table class="table table-dark" style="border-radius: 10rem;" id="notas">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Correo</th>
+          <th scope="col" >parcial1</th>
+          <th scope="col" >parcial2</th>
+          <th scope="col" >parcial3</th>
+          <th scope="col" >parcial4</th>
+          <th scope="col" >promedio</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let item of estudiante.estudiante">
+          <th scope="row">{{item.id}}</th>
+          <td>{{item.name}}</td>
+          <td>{{item.last_name}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.parcial1}}</td>
+          <td>{{item.parcial2}}</td>
+          <td>{{item.parcial3}}</td>
+          <td>{{item.parcial4}}</td>
+          <td>{{item.promedio}}</td>
+        </tr>
+       
+      </tbody>
+    </table>
+  </div>
+ 
+        </div>
+
+        <div class="card bg-dark text-white" style="border-radius: 1rem; margin-top: 240px;" *ngIf="!loaded">
+          <div class="col-12 table-responsive text-center">
+    
+            <table class="table table-dark" style="border-radius: 15rem;" id="notas">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellido</th>
+                  <th scope="col">Correo</th>
+                  <th scope="col" >parcial1</th>
+                  <th scope="col" >parcial2</th>
+                  <th scope="col" >parcial3</th>
+                  <th scope="col" >parcial4</th>
+                  <th scope="col" >promedio</th>
+                </tr>
+              </thead>
+              <tbody>
+        
+                <tr >
+                  <th colspan="9" style="justify-content: center ;">  <span class="loader" style="margin-left:45%;" ></span></th>
+                </tr>
+               
+              </tbody>
+            </table>
+          </div>
+         </div>
+         
+      </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+
+
+
